@@ -1,0 +1,3 @@
+markets = [
+    "STEP-PERP",
+]
