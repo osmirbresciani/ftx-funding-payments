@@ -11,7 +11,7 @@ if __name__ == "__main__":
         response = ftx.get_funding_payment_history(market, None, None, ts_init, ts_now)
         sum_payment = sum_funding(response)
         print(
-            f" ||| {market}  | Long received {sum_payment['long_payment']} | Short received {sum_payment['short_payment']} |||"
+            f" ||| {market}  | Long received {float(sum_payment['long_payment']):.2f} | Short received {float(sum_payment['short_payment']):.2f} |||"
         )
         # formatted_statement = [{i: (str(j).replace('.', ',')) if (i=='payment' or i=='rate') else j for i,j in x.items()} for x in response]
         # statement_to_csv(formatted_statement, 'funding-payments', market)
