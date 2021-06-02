@@ -2,16 +2,18 @@ import time
 import urllib.parse
 from typing import Optional, Dict, Any, List
 import csv
-from requests import Request, Session, Response
+from requests import NullHandler, Request, Session, Response
 import hmac
 from utils.csv_lib import *
-from .api_keys import *
+from decouple import config
 
 
 class FtxClient:
     _ENDPOINT = "https://ftx.com/api/"
 
-    def __init__(self, api_key=API_KEY, api_secret=API_SECRET, subaccount_name=None) -> None:
+    def __init__(
+        self, api_key=config("API_KEY"), api_secret=config("API_SECRET"), subaccount_name=config("SUBACCOUNT_NAME")
+    ):
         self._session = Session()
         self._api_key = api_key
         self._api_secret = api_secret
